@@ -163,8 +163,8 @@ export default function Hero() {
                             variants={letterVariant}
                             className="text-6xl sm:text-8xl lg:text-9xl font-black tracking-tight inline-block"
                             style={{
-                                color: i < 4 ? "white" : "#00D4FF",
-                                textShadow: i >= 4 ? "0 0 40px #00D4FF88" : "none",
+                                color: i < 6 ? "white" : "#00D4FF",
+                                textShadow: i >= 6 ? "0 0 40px #00D4FF88" : "none",
                             }}
                         >
                             {ch}
