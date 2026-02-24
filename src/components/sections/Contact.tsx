@@ -106,7 +106,7 @@ export default function Contact() {
                         <p className="text-slate-400 text-sm mb-2">อีเมลของผม</p>
                         <div className="flex items-center justify-center gap-3 flex-wrap">
                             <span className="text-2xl sm:text-3xl font-bold text-white font-mono">
-                                itaw154@example.com
+                                adisonsompeng49@gmail.com
                             </span>
                             <motion.button
                                 whileHover={{ scale: 1.1 }}
