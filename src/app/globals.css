@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-blue: #00D4FF;
+  --neon-lime: #BAFF29;
+  --neon-purple: #B24BF3;
+  --dark-bg: #050810;
+  --dark-card: #0D1117;
+  --dark-border: #1C2333;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #00D4FF33 transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #00D4FF55, #BAFF2955);
+  border-radius: 99px;
+}
+
+body {
+  background-color: #050810;
+  color: #e2e8f0;
+  font-family: var(--font-geist-sans), 'Noto Sans Thai', sans-serif;
+  overflow-x: hidden;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:bg-white/8 hover:border-neon-blue/30 hover:shadow-card-hover;
+  }
+
+  .neon-text {
+    @apply text-neon-blue drop-shadow-[0_0_20px_#00D4FF88];
+  }
+
+  .neon-lime-text {
+    @apply text-neon-lime drop-shadow-[0_0_20px_#BAFF2988];
+  }
+
+  .neon-border {
+    @apply border border-neon-blue/40 shadow-neon-blue;
+  }
+
+  .section-padding {
+    @apply px-4 py-20 sm:px-6 lg:px-8;
+  }
+
+  .glow-btn {
+    @apply relative overflow-hidden px-8 py-3 rounded-xl font-semibold text-sm tracking-wide transition-all duration-300;
+  }
+
+  .glow-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #00D4FF, #BAFF29, #B24BF3);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: opacity 0.3s;
+  }
+
+  .glow-btn:hover::before {
+    opacity: 1;
+  }
+
+  .tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-neon-blue/10 text-neon-blue border border-neon-blue/20;
+  }
+
+  .tag-lime {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-neon-lime/10 text-neon-lime border border-neon-lime/20;
+  }
+
+  .tag-purple {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-neon-purple/10 text-neon-purple border border-neon-purple/20;
+  }
+
+  .bento-grid {
+    @apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .mesh-bg {
+    background-image: 
+      radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(186, 255, 41, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(178, 75, 243, 0.05) 0%, transparent 70%);
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+}
+
+/* Moving border gradient animation */
+.moving-border-gradient {
+  background: linear-gradient(270deg, #00D4FF, #BAFF29, #B24BF3, #00D4FF);
+  background-size: 400% 400%;
+  animation: border-run 4s ease infinite;
+}
+
+/* Text gradient */
+.text-gradient-blue-lime {
+  background: linear-gradient(135deg, #00D4FF, #BAFF29);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-purple-blue {
+  background: linear-gradient(135deg, #B24BF3, #00D4FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Particle canvas overlay */
+.particle-overlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
