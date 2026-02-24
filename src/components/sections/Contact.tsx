@@ -178,7 +178,7 @@ export default function Contact() {
                     <div className="h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent mb-8" />
                     <p className="text-slate-600 text-sm">
                         สร้างด้วย ❤️ โดย{" "}
-                        <span className="text-gradient-blue-lime font-semibold">ITaw154</span>
+                        <span className="text-gradient-blue-lime font-semibold">Adison Sompeng</span>
                         {" · "}
                         <span className="font-mono">Next.js + Tailwind CSS + Framer Motion</span>
                     </p>

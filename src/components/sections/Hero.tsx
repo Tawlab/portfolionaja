@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Download, Cpu, Code2, Wifi } from "lucide-react";
 
-const CHARS = "ITaw154".split("");
+const CHARS = "Adison Sompeng".split("");
 
 const stagger = {
     hidden: {},
