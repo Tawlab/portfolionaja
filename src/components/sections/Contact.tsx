@@ -15,10 +15,10 @@ const socials = [
         hoverColor: "#ffffff",
     },
     {
-        name: "LinkedIn",
-        handle: "ITaw154",
+        name: "Instagram",
+        handle: "gx_disxn_",
         icon: <Linkedin size={22} />,
-        href: "https://linkedin.com/in/itaw154",
+        href: "https://www.instagram.com/gx_disxn_/",
         color: "#0A66C2",
         bg: "bg-blue-600/10",
         hoverColor: "#0A66C2",
@@ -34,9 +34,9 @@ const socials = [
     },
     {
         name: "Facebook",
-        handle: "ITaw154",
+        handle: "Adison Sompeng",
         icon: <Facebook size={22} />,
-        href: "https://facebook.com/itaw154",
+        href: "https://www.facebook.com/adison.sompeng",
         color: "#1877F2",
         bg: "bg-blue-500/10",
         hoverColor: "#1877F2",
@@ -47,7 +47,7 @@ export default function Contact() {
     const [copied, setCopied] = useState(false);
 
     const copyEmail = () => {
-        navigator.clipboard.writeText("itaw154@example.com");
+        navigator.clipboard.writeText("adisonsompeng49@gmail.com");
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
