@@ -183,7 +183,7 @@ export default function Contact() {
                         <span className="font-mono">Next.js + Tailwind CSS + Framer Motion</span>
                     </p>
                     <p className="text-slate-700 text-xs mt-2">
-                        © 2024 adisonsompeng49@gmail.com. All rights reserved.
+                        © 2024 Adison Sompeng. All rights reserved.
                     </p>
                 </motion.div>
             </div>
