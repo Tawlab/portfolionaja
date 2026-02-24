@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Facebook, Copy, Check, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Mail, Facebook, Copy, Check, ExternalLink, Instagram } from "lucide-react";
 
 const socials = [
     {
@@ -17,7 +17,7 @@ const socials = [
     {
         name: "Instagram",
         handle: "gx_disxn_",
-        icon: <Linkedin size={22} />,
+        icon: <Instagram size={22} />,
         href: "https://www.instagram.com/gx_disxn_/",
         color: "#0A66C2",
         bg: "bg-blue-600/10",
