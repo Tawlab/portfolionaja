@@ -25,9 +25,9 @@ const socials = [
     },
     {
         name: "Email",
-        handle: "itaw154@example.com",
+        handle: "adisonsompeng49@gmail.com",
         icon: <Mail size={22} />,
-        href: "mailto:itaw154@example.com",
+        href: "mailto:adisonsompeng49@gmail.com",
         color: "#00D4FF",
         bg: "bg-neon-blue/10",
         hoverColor: "#00D4FF",
