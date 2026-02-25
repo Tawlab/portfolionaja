@@ -5,79 +5,85 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Github, Award, ImageIcon } from "lucide-react";
 
+/* ── Projects ── */
 const projects = [
     {
-        id: "mindtalk",
-        image: "/images/projects/mindtalk.png",
-        title: "MindTalk",
-        subtitle: "Mental Health Chatbot",
-        short: "ระบบ Chatbot ด้านสุขภาพจิตที่ช่วยให้ผู้ใช้สามารถพูดคุยและรับคำแนะนำ",
+        id: "mbs",
+        image: "/images/projects/mbs.png",
+        title: "MBS",
+        subtitle: "Mobile Shop Management System",
+        short: "ระบบบริหารจัดการร้านจำหน่ายมือถือ ครอบคลุมการขาย การซ่อม และคลังสินค้า (โปรเจกต์จบ ป.ตรี)",
         description:
-            "พัฒนาระบบ Chatbot ด้านสุขภาพจิตโดยใช้ PHP และ MySQL เป็น Backend มี AI-powered responses ที่ช่วยวิเคราะห์อารมณ์และให้คำแนะนำเบื้องต้น มี Dashboard สำหรับนักจิตวิทยาในการติดตามผู้ใช้ รองรับการใช้งานผ่าน Web Browser",
-        tags: ["PHP", "MySQL", "JavaScript", "AI/NLP", "HTML/CSS"],
-        tagColors: ["neon-blue", "neon-lime", "neon-purple"],
-        color: "#00D4FF",
+            "ระบบบริหารจัดการร้านจำหน่ายมือถือสำหรับโปรเจกต์จบระดับปริญญาตรี พัฒนาด้วย PHP, HTML, CSS, JavaScript และ Bootstrap รองรับการจัดการข้อมูลอย่างยืดหยุ่น ฟีเจอร์หลักประกอบด้วยระบบจัดการข้อมูลการขาย ระบบซ่อม ระบบบริหารคลังสินค้า (รับเข้า–นำออก) การสร้าง QR Code ด้วย PHP Library และการแจ้งเตือนผ่านอีเมลด้วย PHPMailer",
+        tags: ["PHP", "HTML", "CSS", "JavaScript", "Bootstrap", "PHPMailer", "QR Code"],
+        color: "#BAFF29",
         role: "Full-stack Developer",
-        type: "Web Application",
+        type: "Senior Project",
         status: "Completed",
     },
     {
-        id: "wheel2share",
-        image: "/images/projects/wheel2share.png",
-        title: "Wheel2Share",
-        subtitle: "Vehicle Rental App",
-        short: "แอปพลิเคชันมือถือสำหรับให้เช่ายานพาหนะแบบ P2P",
+        id: "qd",
+        image: "/images/projects/qd.png",
+        title: "QD",
+        subtitle: "Document Management System",
+        short: "ระบบจัดการเอกสารภายในองค์กร เพื่อเก็บประวัติและติดตามเอกสาร (Freelance)",
         description:
-            "แอปพลิเคชันมือถือสำหรับให้เช่ายานพาหนะแบบ Peer-to-Peer พัฒนาด้วย .NET MAUI และ C# สำหรับ Cross-platform (iOS/Android) เชื่อมต่อกับ REST API Backend มีระบบ Authentication, การจัดการการจอง, ระบบรีวิว และการชำระเงิน",
-        tags: [".NET MAUI", "C#", "REST API", "SQL Server", "XAML"],
-        tagColors: ["neon-purple", "neon-blue", "neon-lime"],
-        color: "#BAFF29",
-        role: "Mobile Developer",
-        type: "Mobile Application",
-        status: "In Progress",
+            "ระบบจัดการเอกสารภายในองค์กรในรูปแบบ Freelance ช่วยให้บุคลากรสามารถเก็บประวัติและติดตามสถานะเอกสารได้อย่างมีประสิทธิภาพ ลดการใช้กระดาษและเพิ่มความสะดวกในการค้นหา พร้อมระบบแจ้งเตือนผ่านอีเมลด้วย PHPMailer พัฒนาด้วย PHP, HTML, CSS, JavaScript และ Bootstrap",
+        tags: ["PHP", "HTML", "CSS", "JavaScript", "Bootstrap", "PHPMailer"],
+        color: "#00D4FF",
+        role: "Full-stack Developer",
+        type: "Freelance",
+        status: "Completed",
     },
     {
-        id: "queue-doc",
-        image: "/images/projects/queue-doc.png",
-        title: "Queue & Document Management",
-        subtitle: "ระบบจัดการคิวและเอกสาร",
-        short: "ระบบจัดการคิวและเอกสารสำหรับองค์กร ลดการใช้กระดาษและเพิ่มประสิทธิภาพ",
+        id: "qs",
+        image: "/images/projects/qs.png",
+        title: "QS",
+        subtitle: "Hospital Queue Booking System",
+        short: "ระบบจองคิวโรงพยาบาล เพื่อความสะดวกของผู้ใช้และบุคลากร (Freelance)",
         description:
-            "ระบบจัดการคิวและเอกสารออนไลน์สำหรับองค์กร พัฒนาด้วย PHP และ MySQL ช่วยลดการใช้กระดาษและเพิ่มประสิทธิภาพการทำงาน มีระบบแจ้งเตือนผ่าน SMS/Email, Dashboard แบบ Real-time และรองรับการ Export ไฟล์ PDF",
-        tags: ["PHP", "MySQL", "JavaScript", "Bootstrap", "PDF"],
-        tagColors: ["neon-blue", "neon-lime", "neon-purple"],
+            "ระบบจองคิวเข้าใช้บริการภายในโรงพยาบาลในรูปแบบ Freelance ผู้ใช้สามารถจองคิวล่วงหน้าและบุคลากรสามารถติดตามและจัดการคิวได้แบบ Real-time ช่วยลดความแออัดและเพิ่มประสิทธิภาพการให้บริการ มีระบบเก็บประวัติการเข้าใช้บริการ พัฒนาด้วย PHP, HTML, CSS, JavaScript และ Bootstrap",
+        tags: ["PHP", "HTML", "CSS", "JavaScript", "Bootstrap"],
         color: "#B24BF3",
         role: "Full-stack Developer",
-        type: "Web Application",
+        type: "Freelance",
         status: "Completed",
     },
 ];
 
+/* ── Certificates ── */
 const certificates = [
     {
-        id: "aws",
-        image: "/images/certificates/aws.png",
-        name: "AWS Cloud Practitioner Essentials",
-        org: "Amazon Web Services",
-        color: "#FF9900",
-    },
-    {
-        id: "coursera",
-        image: "/images/certificates/coursera.png",
-        name: "Introduction to IoT & Embedded Systems",
-        org: "Coursera",
+        id: "gcdp1",
+        image: "/images/certificates/GCDP_1.png",
+        name: "Global Capstone Design Project (GCDP) — Thailand",
+        org: "คณะวิศวกรรมศาสตร์ มทร.ธัญบุรี (RMUTT) × International University",
         color: "#00D4FF",
     },
     {
-        id: "microsoft",
-        image: "/images/certificates/microsoft.png",
-        name: "Programming with C#",
-        org: "Microsoft Learn",
-        color: "#0078D4",
+        id: "gcdp2",
+        image: "/images/certificates/GCDP_2.png",
+        name: "Global Capstone Design Project (GCDP) — South Korea",
+        org: "คณะวิศวกรรมศาสตร์ มทร.ธัญบุรี (RMUTT) × International University",
+        color: "#BAFF29",
+    },
+    {
+        id: "html-cer",
+        image: "/images/certificates/HTML_Cer.png",
+        name: "HTML Certificate",
+        org: "Sololearn",
+        color: "#E34F26",
+    },
+    {
+        id: "copilot",
+        image: "/images/certificates/Copilot.png",
+        name: "AI Copilot — Effective AI Usage Workshop",
+        org: "อบรมการใช้งาน AI อย่างมีประสิทธิภาพ",
+        color: "#B24BF3",
     },
 ];
 
-/** Placeholder รูปโปรเจกต์ (แนวนอน) */
+/* ── Helpers ── */
 function ProjectImage({ src, alt, color }: { src: string; alt: string; color: string }) {
     return (
         <div
@@ -91,11 +97,8 @@ function ProjectImage({ src, alt, color }: { src: string; alt: string; color: st
                 className="object-cover"
                 onError={(e) => {
                     (e.currentTarget as HTMLImageElement).style.display = "none";
-                    const parent = e.currentTarget.parentElement;
-                    if (parent) {
-                        const fb = parent.querySelector(".img-fallback") as HTMLElement | null;
-                        if (fb) fb.style.display = "flex";
-                    }
+                    const fb = e.currentTarget.parentElement?.querySelector(".img-fallback") as HTMLElement | null;
+                    if (fb) fb.style.display = "flex";
                 }}
             />
             <div
@@ -109,17 +112,11 @@ function ProjectImage({ src, alt, color }: { src: string; alt: string; color: st
     );
 }
 
-/** Placeholder ไอคอน certificate (สี่เหลี่ยม) */
 function CertImage({ src, alt, color }: { src: string; alt: string; color: string }) {
     return (
         <div
             className="relative flex-shrink-0 rounded-xl overflow-hidden"
-            style={{
-                width: 48,
-                height: 48,
-                background: `${color}15`,
-                border: `1px solid ${color}30`,
-            }}
+            style={{ width: 52, height: 52, background: `${color}15`, border: `1px solid ${color}30` }}
         >
             <Image
                 src={src}
@@ -128,23 +125,21 @@ function CertImage({ src, alt, color }: { src: string; alt: string; color: strin
                 className="object-contain p-1"
                 onError={(e) => {
                     (e.currentTarget as HTMLImageElement).style.display = "none";
-                    const parent = e.currentTarget.parentElement;
-                    if (parent) {
-                        const fb = parent.querySelector(".img-fallback") as HTMLElement | null;
-                        if (fb) fb.style.display = "flex";
-                    }
+                    const fb = e.currentTarget.parentElement?.querySelector(".img-fallback") as HTMLElement | null;
+                    if (fb) fb.style.display = "flex";
                 }}
             />
             <div
                 className="img-fallback absolute inset-0 items-center justify-center"
                 style={{ display: "flex", color }}
             >
-                <ImageIcon size={20} strokeWidth={1.5} />
+                <ImageIcon size={22} strokeWidth={1.5} />
             </div>
         </div>
     );
 }
 
+/* ── Main Component ── */
 export default function Works() {
     const [selected, setSelected] = useState<string | null>(null);
     const selectedProject = projects.find((p) => p.id === selected);
@@ -189,7 +184,7 @@ export default function Works() {
                             style={{ borderTop: `2px solid ${project.color}44` }}
                         >
                             {/* Status pill */}
-                            <div className="absolute top-4 right-4">
+                            <div className="absolute top-4 right-4 z-10">
                                 <span
                                     className="text-xs px-2.5 py-1 rounded-full font-medium"
                                     style={{
@@ -202,33 +197,19 @@ export default function Works() {
                                 </span>
                             </div>
 
-                            {/* Project image */}
-                            <ProjectImage
-                                src={project.image}
-                                alt={project.title}
-                                color={project.color}
-                            />
+                            <ProjectImage src={project.image} alt={project.title} color={project.color} />
 
-                            {/* Title */}
                             <h3 className="text-xl font-black text-white group-hover:text-neon-blue transition-colors mb-1">
                                 {project.title}
                             </h3>
-                            <p
-                                className="text-sm font-medium mb-3"
-                                style={{ color: project.color }}
-                            >
+                            <p className="text-sm font-medium mb-3" style={{ color: project.color }}>
                                 {project.subtitle}
                             </p>
-                            <p className="text-slate-400 text-sm leading-relaxed mb-5">
-                                {project.short}
-                            </p>
+                            <p className="text-slate-400 text-sm leading-relaxed mb-5">{project.short}</p>
 
-                            {/* Tags */}
                             <div className="flex flex-wrap gap-2">
                                 {project.tags.slice(0, 3).map((tag) => (
-                                    <span key={tag} className="tag text-xs">
-                                        {tag}
-                                    </span>
+                                    <span key={tag} className="tag text-xs">{tag}</span>
                                 ))}
                                 {project.tags.length > 3 && (
                                     <span className="text-xs px-2 py-0.5 rounded-full text-slate-500 bg-white/5">
@@ -240,15 +221,13 @@ export default function Works() {
                             {/* Hover glow */}
                             <div
                                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                                style={{
-                                    background: `radial-gradient(ellipse at top left, ${project.color}08, transparent 60%)`,
-                                }}
+                                style={{ background: `radial-gradient(ellipse at top left, ${project.color}08, transparent 60%)` }}
                             />
                         </motion.div>
                     ))}
                 </div>
 
-                {/* Certificates banner */}
+                {/* Certificates */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -261,19 +240,15 @@ export default function Works() {
                             ใบรับรอง & <span className="text-neon-lime">Certificates</span>
                         </h3>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {certificates.map((cert) => (
                             <div
                                 key={cert.id}
                                 className="flex items-start gap-3 p-4 rounded-xl bg-white/3 border border-white/5 hover:border-neon-lime/20 transition-colors"
                             >
-                                <CertImage
-                                    src={cert.image}
-                                    alt={cert.name}
-                                    color={cert.color}
-                                />
+                                <CertImage src={cert.image} alt={cert.name} color={cert.color} />
                                 <div>
-                                    <p className="text-white text-sm font-semibold">{cert.name}</p>
+                                    <p className="text-white text-sm font-semibold leading-snug">{cert.name}</p>
                                     <p className="text-slate-500 text-xs mt-1">{cert.org}</p>
                                 </div>
                             </div>
@@ -282,7 +257,7 @@ export default function Works() {
                 </motion.div>
             </div>
 
-            {/* Expanded Modal */}
+            {/* Modal */}
             <AnimatePresence>
                 {selected && selectedProject && (
                     <>
@@ -309,24 +284,17 @@ export default function Works() {
                                     <X size={18} />
                                 </button>
 
-                                {/* Modal project image */}
                                 <ProjectImage
                                     src={selectedProject.image}
                                     alt={selectedProject.title}
                                     color={selectedProject.color}
                                 />
 
-                                <h3 className="text-2xl font-black text-white mb-1">
-                                    {selectedProject.title}
-                                </h3>
-                                <p
-                                    className="text-sm font-semibold mb-4"
-                                    style={{ color: selectedProject.color }}
-                                >
+                                <h3 className="text-2xl font-black text-white mb-1">{selectedProject.title}</h3>
+                                <p className="text-sm font-semibold mb-4" style={{ color: selectedProject.color }}>
                                     {selectedProject.subtitle}
                                 </p>
 
-                                {/* Meta info */}
                                 <div className="flex gap-3 mb-5">
                                     <span className="tag text-xs">{selectedProject.type}</span>
                                     <span className="tag text-xs">{selectedProject.role}</span>
@@ -334,9 +302,7 @@ export default function Works() {
 
                                 <div
                                     className="h-px mb-5 rounded-full"
-                                    style={{
-                                        background: `linear-gradient(to right, ${selectedProject.color}66, transparent)`,
-                                    }}
+                                    style={{ background: `linear-gradient(to right, ${selectedProject.color}66, transparent)` }}
                                 />
 
                                 <p className="text-slate-300 leading-relaxed text-sm mb-6">
@@ -345,9 +311,7 @@ export default function Works() {
 
                                 <div className="flex flex-wrap gap-2 mb-6">
                                     {selectedProject.tags.map((tag) => (
-                                        <span key={tag} className="tag text-xs">
-                                            {tag}
-                                        </span>
+                                        <span key={tag} className="tag text-xs">{tag}</span>
                                     ))}
                                 </div>
 

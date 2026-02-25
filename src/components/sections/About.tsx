@@ -70,7 +70,7 @@ export default function About() {
                                 <div className="relative z-10 flex flex-col items-center gap-3">
                                     <div className="w-24 h-24 rounded-full moving-border-gradient p-[2px]">
                                         <div className="w-full h-full rounded-full bg-dark-card flex items-center justify-center">
-                                            <span className="text-4xl font-black text-gradient-blue-lime">IT</span>
+                                            <span className="text-4xl font-black text-gradient-blue-lime">AS</span>
                                         </div>
                                     </div>
                                     <span className="text-white font-bold text-lg">Adison Sompeng</span>
