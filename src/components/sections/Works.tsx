@@ -9,7 +9,7 @@ import { X, Github, Award, ImageIcon } from "lucide-react";
 const projects = [
     {
         id: "mbs",
-        image: "/images/projects/mbs.png",
+        image: "/images/projects/MBS.png",
         title: "MBS",
         subtitle: "Mobile Shop Management System",
         short: "ระบบบริหารจัดการร้านจำหน่ายมือถือ ครอบคลุมการขาย การซ่อม และคลังสินค้า (โปรเจกต์จบ ป.ตรี)",
@@ -23,7 +23,7 @@ const projects = [
     },
     {
         id: "qd",
-        image: "/images/projects/qd.png",
+        image: "/images/projects/QD.png",
         title: "QD",
         subtitle: "Document Management System",
         short: "ระบบจัดการเอกสารภายในองค์กร เพื่อเก็บประวัติและติดตามเอกสาร (Freelance)",
@@ -37,7 +37,7 @@ const projects = [
     },
     {
         id: "qs",
-        image: "/images/projects/qs.png",
+        image: "/images/projects/QS.png",
         title: "QS",
         subtitle: "Hospital Queue Booking System",
         short: "ระบบจองคิวโรงพยาบาล เพื่อความสะดวกของผู้ใช้และบุคลากร (Freelance)",
@@ -55,14 +55,14 @@ const projects = [
 const certificates = [
     {
         id: "gcdp1",
-        image: "/images/certificates/GCDP_1.png",
+        image: "/images/certificates/GCDP_1_Cer.png",
         name: "Global Capstone Design Project (GCDP) — Thailand",
         org: "คณะวิศวกรรมศาสตร์ มทร.ธัญบุรี (RMUTT) × International University",
         color: "#00D4FF",
     },
     {
         id: "gcdp2",
-        image: "/images/certificates/GCDP_2.png",
+        image: "/images/certificates/GCDP_2_Cer.png",
         name: "Global Capstone Design Project (GCDP) — South Korea",
         org: "คณะวิศวกรรมศาสตร์ มทร.ธัญบุรี (RMUTT) × International University",
         color: "#BAFF29",
@@ -76,7 +76,7 @@ const certificates = [
     },
     {
         id: "copilot",
-        image: "/images/certificates/Copilot.png",
+        image: "/images/certificates/Copilot_Cer.png",
         name: "AI Copilot — Effective AI Usage Workshop",
         org: "อบรมการใช้งาน AI อย่างมีประสิทธิภาพ",
         color: "#B24BF3",
