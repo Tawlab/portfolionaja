@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ExternalLink, Github, Star, Award } from "lucide-react";
+import { X, Github, Award, ImageIcon } from "lucide-react";
 
 const projects = [
     {
         id: "mindtalk",
-        emoji: "🧠",
+        image: "/images/projects/mindtalk.png",
         title: "MindTalk",
         subtitle: "Mental Health Chatbot",
         short: "ระบบ Chatbot ด้านสุขภาพจิตที่ช่วยให้ผู้ใช้สามารถพูดคุยและรับคำแนะนำ",
@@ -22,7 +23,7 @@ const projects = [
     },
     {
         id: "wheel2share",
-        emoji: "🛵",
+        image: "/images/projects/wheel2share.png",
         title: "Wheel2Share",
         subtitle: "Vehicle Rental App",
         short: "แอปพลิเคชันมือถือสำหรับให้เช่ายานพาหนะแบบ P2P",
@@ -37,7 +38,7 @@ const projects = [
     },
     {
         id: "queue-doc",
-        emoji: "📋",
+        image: "/images/projects/queue-doc.png",
         title: "Queue & Document Management",
         subtitle: "ระบบจัดการคิวและเอกสาร",
         short: "ระบบจัดการคิวและเอกสารสำหรับองค์กร ลดการใช้กระดาษและเพิ่มประสิทธิภาพ",
@@ -52,11 +53,97 @@ const projects = [
     },
 ];
 
-const tagColorMap: Record<string, string> = {
-    "neon-blue": "tag",
-    "neon-lime": "tag-lime",
-    "neon-purple": "tag-purple",
-};
+const certificates = [
+    {
+        id: "aws",
+        image: "/images/certificates/aws.png",
+        name: "AWS Cloud Practitioner Essentials",
+        org: "Amazon Web Services",
+        color: "#FF9900",
+    },
+    {
+        id: "coursera",
+        image: "/images/certificates/coursera.png",
+        name: "Introduction to IoT & Embedded Systems",
+        org: "Coursera",
+        color: "#00D4FF",
+    },
+    {
+        id: "microsoft",
+        image: "/images/certificates/microsoft.png",
+        name: "Programming with C#",
+        org: "Microsoft Learn",
+        color: "#0078D4",
+    },
+];
+
+/** Placeholder รูปโปรเจกต์ (แนวนอน) */
+function ProjectImage({ src, alt, color }: { src: string; alt: string; color: string }) {
+    return (
+        <div
+            className="relative w-full h-40 rounded-xl overflow-hidden mb-4"
+            style={{ background: `${color}10`, border: `1px solid ${color}20` }}
+        >
+            <Image
+                src={src}
+                alt={alt}
+                fill
+                className="object-cover"
+                onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.display = "none";
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                        const fb = parent.querySelector(".img-fallback") as HTMLElement | null;
+                        if (fb) fb.style.display = "flex";
+                    }
+                }}
+            />
+            <div
+                className="img-fallback absolute inset-0 flex-col items-center justify-center gap-2"
+                style={{ display: "flex", color }}
+            >
+                <ImageIcon size={32} strokeWidth={1.5} />
+                <span className="text-xs opacity-60">รอรูปภาพ</span>
+            </div>
+        </div>
+    );
+}
+
+/** Placeholder ไอคอน certificate (สี่เหลี่ยม) */
+function CertImage({ src, alt, color }: { src: string; alt: string; color: string }) {
+    return (
+        <div
+            className="relative flex-shrink-0 rounded-xl overflow-hidden"
+            style={{
+                width: 48,
+                height: 48,
+                background: `${color}15`,
+                border: `1px solid ${color}30`,
+            }}
+        >
+            <Image
+                src={src}
+                alt={alt}
+                fill
+                className="object-contain p-1"
+                onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.display = "none";
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                        const fb = parent.querySelector(".img-fallback") as HTMLElement | null;
+                        if (fb) fb.style.display = "flex";
+                    }
+                }}
+            />
+            <div
+                className="img-fallback absolute inset-0 items-center justify-center"
+                style={{ display: "flex", color }}
+            >
+                <ImageIcon size={20} strokeWidth={1.5} />
+            </div>
+        </div>
+    );
+}
 
 export default function Works() {
     const [selected, setSelected] = useState<string | null>(null);
@@ -115,8 +202,12 @@ export default function Works() {
                                 </span>
                             </div>
 
-                            {/* Emoji */}
-                            <div className="text-5xl mb-4">{project.emoji}</div>
+                            {/* Project image */}
+                            <ProjectImage
+                                src={project.image}
+                                alt={project.title}
+                                color={project.color}
+                            />
 
                             {/* Title */}
                             <h3 className="text-xl font-black text-white group-hover:text-neon-blue transition-colors mb-1">
@@ -171,16 +262,16 @@ export default function Works() {
                         </h3>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {[
-                            { name: "AWS Cloud Practitioner Essentials", org: "Amazon Web Services", icon: "☁️" },
-                            { name: "Introduction to IoT & Embedded Systems", org: "Coursera", icon: "📡" },
-                            { name: "Programming with C#", org: "Microsoft Learn", icon: "🔷" },
-                        ].map((cert) => (
+                        {certificates.map((cert) => (
                             <div
-                                key={cert.name}
+                                key={cert.id}
                                 className="flex items-start gap-3 p-4 rounded-xl bg-white/3 border border-white/5 hover:border-neon-lime/20 transition-colors"
                             >
-                                <span className="text-2xl">{cert.icon}</span>
+                                <CertImage
+                                    src={cert.image}
+                                    alt={cert.name}
+                                    color={cert.color}
+                                />
                                 <div>
                                     <p className="text-white text-sm font-semibold">{cert.name}</p>
                                     <p className="text-slate-500 text-xs mt-1">{cert.org}</p>
@@ -218,7 +309,13 @@ export default function Works() {
                                     <X size={18} />
                                 </button>
 
-                                <div className="text-5xl mb-4">{selectedProject.emoji}</div>
+                                {/* Modal project image */}
+                                <ProjectImage
+                                    src={selectedProject.image}
+                                    alt={selectedProject.title}
+                                    color={selectedProject.color}
+                                />
+
                                 <h3 className="text-2xl font-black text-white mb-1">
                                     {selectedProject.title}
                                 </h3>

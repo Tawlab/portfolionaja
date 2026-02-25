@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronRight } from "lucide-react";
+import { X, ChevronRight, ImageIcon } from "lucide-react";
 
 const activities = [
     {
         id: "aws-workshop",
-        emoji: "☁️",
+        image: "/images/activities/aws-workshop.png",
         title: "AWS Cloud Workshop",
         short: "เข้าร่วม Workshop ด้าน AWS Cloud Computing",
         description:
@@ -19,7 +20,7 @@ const activities = [
     },
     {
         id: "hackathon",
-        emoji: "💻",
+        image: "/images/activities/hackathon.png",
         title: "University Hackathon",
         short: "ร่วมแข่งขัน Hackathon ระดับมหาวิทยาลัย",
         description:
@@ -31,7 +32,7 @@ const activities = [
     },
     {
         id: "fitness",
-        emoji: "🏋️",
+        image: "/images/activities/fitness.png",
         title: "Fitness & Wellness",
         short: "กิจวัตรออกกำลังกายและดูแลสุขภาพ",
         description:
@@ -43,7 +44,7 @@ const activities = [
     },
     {
         id: "japanese",
-        emoji: "🇯🇵",
+        image: "/images/activities/japanese.png",
         title: "Japanese Study",
         short: "เรียนภาษาญี่ปุ่นด้วยตัวเอง",
         description:
@@ -55,7 +56,7 @@ const activities = [
     },
     {
         id: "minecraft",
-        emoji: "⛏️",
+        image: "/images/activities/minecraft.png",
         title: "Minecraft Server Admin",
         short: "บริหารและพัฒนา Minecraft Server",
         description:
@@ -67,7 +68,7 @@ const activities = [
     },
     {
         id: "student-club",
-        emoji: "👥",
+        image: "/images/activities/student-club.png",
         title: "Student Club",
         short: "ชมรมนักศึกษาวิศวกรรมคอมพิวเตอร์",
         description:
@@ -78,6 +79,57 @@ const activities = [
         border: "border-neon-lime/20",
     },
 ];
+
+/** แสดงรูปภาพ หรือ placeholder ถ้ายังไม่มีไฟล์ */
+function ActivityImage({
+    src,
+    alt,
+    size = "card",
+    color,
+}: {
+    src: string;
+    alt: string;
+    size?: "card" | "modal";
+    color: string;
+}) {
+    const dim = size === "card" ? 64 : 96;
+
+    return (
+        <div
+            className="relative flex-shrink-0 rounded-2xl overflow-hidden"
+            style={{
+                width: dim,
+                height: dim,
+                background: `${color}15`,
+                border: `1px solid ${color}30`,
+            }}
+        >
+            <Image
+                src={src}
+                alt={alt}
+                fill
+                className="object-cover"
+                onError={(e) => {
+                    // ถ้าไม่มีรูป ซ่อน img แล้วแสดง fallback
+                    (e.currentTarget as HTMLImageElement).style.display = "none";
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                        const fb = parent.querySelector(".img-fallback") as HTMLElement | null;
+                        if (fb) fb.style.display = "flex";
+                    }
+                }}
+            />
+            {/* Fallback placeholder */}
+            <div
+                className="img-fallback absolute inset-0 flex-col items-center justify-center gap-1 text-center p-2"
+                style={{ display: "flex", color: color }}
+            >
+                <ImageIcon size={size === "card" ? 20 : 28} strokeWidth={1.5} />
+                <span className="text-xs opacity-60 leading-tight">รอรูปภาพ</span>
+            </div>
+        </div>
+    );
+}
 
 export default function Activities() {
     const [selected, setSelected] = useState<string | null>(null);
@@ -121,7 +173,16 @@ export default function Activities() {
                             onClick={() => setSelected(activity.id)}
                             className={`glass-card p-6 cursor-pointer group border ${activity.border} hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300`}
                         >
-                            <div className="text-4xl mb-4">{activity.emoji}</div>
+                            {/* Image */}
+                            <div className="mb-4">
+                                <ActivityImage
+                                    src={activity.image}
+                                    alt={activity.title}
+                                    size="card"
+                                    color={activity.color}
+                                />
+                            </div>
+
                             <h3 className="font-bold text-white text-lg mb-2 group-hover:text-neon-blue transition-colors">
                                 {activity.title}
                             </h3>
@@ -180,7 +241,16 @@ export default function Activities() {
                                     <X size={18} />
                                 </button>
 
-                                <div className="text-5xl mb-5">{selectedActivity.emoji}</div>
+                                {/* Modal image */}
+                                <div className="mb-5">
+                                    <ActivityImage
+                                        src={selectedActivity.image}
+                                        alt={selectedActivity.title}
+                                        size="modal"
+                                        color={selectedActivity.color}
+                                    />
+                                </div>
+
                                 <h3 className="text-2xl font-black text-white mb-3">
                                     {selectedActivity.title}
                                 </h3>
