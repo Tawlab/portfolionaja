@@ -30,9 +30,8 @@ const bioCards = [
         colorHex: "#BAFF29",
         items: [
             "📱 Mobile: .NET MAUI, C#, Flutter",
-            "🌐 Web: PHP, HTML/CSS, JavaScript",
-            "🗄️ Database: MySQL, SQL Server",
-            "☁️ Cloud: AWS (EC2, S3, Lambda)",
+            "🌐 Web: PHP, HTML/CSS, JavaScript, Bootstrap",
+            "🗄️ Database: MySQL",
         ],
         span: "col-span-1",
     },
@@ -60,8 +59,7 @@ const bioCards = [
         colorHex: "#00D4FF",
         items: [
             "🇹🇭 ภาษาไทย (เจ้าของภาษา)",
-            "🇺🇸 English (Intermediate)",
-            "🇯🇵 日本語 (กำลังเรียน N5)",
+            "🇺🇸 English ",
         ],
         span: "col-span-1",
     },

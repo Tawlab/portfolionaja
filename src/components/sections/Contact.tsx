@@ -9,7 +9,7 @@ const socials = [
         name: "GitHub",
         handle: "@itaw154",
         icon: <Github size={22} />,
-        href: "https://github.com/itaw154",
+        href: "https://github.com/Tawlab",
         color: "#ffffff",
         bg: "bg-white/5",
         hoverColor: "#ffffff",
@@ -84,11 +84,6 @@ export default function Contact() {
                         Let&apos;s{" "}
                         <span className="text-gradient-blue-lime">Connect</span>
                     </h2>
-                    <p className="mt-5 text-slate-400 max-w-lg mx-auto text-base leading-relaxed">
-                        ถ้าคุณมีโปรเจกต์ที่น่าสนใจหรืออยากพูดคุยด้วย
-                        <br className="hidden sm:block" />
-                        ผมยินดีเสมอ — ส่งข้อความมาได้เลยครับ!
-                    </p>
                 </motion.div>
 
                 {/* Big email CTA */}

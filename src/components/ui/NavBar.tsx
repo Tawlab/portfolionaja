@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 const navLinks = [
     { href: "#home", label: "หน้าหลัก" },
     { href: "#about", label: "เกี่ยวกับ" },
+    { href: "#shortbio", label: "ข้อมูลสั้น" },
     { href: "#activities", label: "ทักษะ" },
     { href: "#works", label: "ผลงาน" },
     { href: "#contact", label: "ติดต่อ" },
@@ -38,8 +39,8 @@ export default function NavBar() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? "bg-dark-bg/80 backdrop-blur-2xl border-b border-white/5 shadow-lg"
-                    : "bg-transparent"
+                ? "bg-dark-bg/80 backdrop-blur-2xl border-b border-white/5 shadow-lg"
+                : "bg-transparent"
                 }`}
         >
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -53,11 +54,11 @@ export default function NavBar() {
                     <div className="relative w-9 h-9 rounded-xl flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 moving-border-gradient opacity-80" />
                         <div className="absolute inset-[1px] bg-dark-bg rounded-[10px] flex items-center justify-center">
-                            <span className="font-mono font-black text-sm text-gradient-blue-lime">IT</span>
+                            <span className="font-mono font-black text-sm text-gradient-blue-lime">AS</span>
                         </div>
                     </div>
                     <span className="font-bold text-white text-base tracking-wide group-hover:text-neon-blue transition-colors">
-                        ITaw<span className="text-neon-lime">154</span>
+                        Adison<span className="text-neon-lime"> S.</span>
                     </span>
                 </motion.a>
 
@@ -69,8 +70,8 @@ export default function NavBar() {
                                 href={link.href}
                                 onClick={(e) => handleNav(e, link.href)}
                                 className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 block ${active === link.href
-                                        ? "text-neon-blue"
-                                        : "text-slate-400 hover:text-white"
+                                    ? "text-neon-blue"
+                                    : "text-slate-400 hover:text-white"
                                     }`}
                             >
                                 {active === link.href && (

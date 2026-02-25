@@ -106,35 +106,23 @@ function ProjectImage({ src, alt, color }: { src: string; alt: string; color: st
                 style={{ display: "flex", color }}
             >
                 <ImageIcon size={32} strokeWidth={1.5} />
-                <span className="text-xs opacity-60">รอรูปภาพ</span>
             </div>
         </div>
     );
 }
 
-function CertImage({ src, alt, color }: { src: string; alt: string; color: string }) {
+function CertImage({ src, alt }: { src: string; alt: string }) {
     return (
         <div
             className="relative flex-shrink-0 rounded-xl overflow-hidden"
-            style={{ width: 52, height: 52, background: `${color}15`, border: `1px solid ${color}30` }}
+            style={{ width: 72, height: 72, background: "#ffffff08", border: "1px solid #ffffff15" }}
         >
             <Image
                 src={src}
                 alt={alt}
                 fill
-                className="object-contain p-1"
-                onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = "none";
-                    const fb = e.currentTarget.parentElement?.querySelector(".img-fallback") as HTMLElement | null;
-                    if (fb) fb.style.display = "flex";
-                }}
+                className="object-contain p-1.5"
             />
-            <div
-                className="img-fallback absolute inset-0 items-center justify-center"
-                style={{ display: "flex", color }}
-            >
-                <ImageIcon size={22} strokeWidth={1.5} />
-            </div>
         </div>
     );
 }
@@ -246,7 +234,7 @@ export default function Works() {
                                 key={cert.id}
                                 className="flex items-start gap-3 p-4 rounded-xl bg-white/3 border border-white/5 hover:border-neon-lime/20 transition-colors"
                             >
-                                <CertImage src={cert.image} alt={cert.name} color={cert.color} />
+                                <CertImage src={cert.image} alt={cert.name} />
                                 <div>
                                     <p className="text-white text-sm font-semibold leading-snug">{cert.name}</p>
                                     <p className="text-slate-500 text-xs mt-1">{cert.org}</p>

@@ -5,10 +5,9 @@ import { MapPin, GraduationCap, Heart, Coffee } from "lucide-react";
 import Image from "next/image";
 
 const interests = [
-    { emoji: "☁️", label: "AWS Cloud", color: "text-neon-blue" },
-    { emoji: "🇯🇵", label: "ภาษาญี่ปุ่น", color: "text-red-400" },
-    { emoji: "🏋️", label: "ฟิตเนส", color: "text-neon-lime" },
-    { emoji: "⛏️", label: "Minecraft", color: "text-green-400" },
+    { emoji: "💻", label: "การเขียนโปรแกรม", color: "text-neon-blue" },
+    { emoji: "🏋️", label: "การออกกำลังกาย", color: "text-neon-lime" },
+    { emoji: "🇺🇸", label: "เรียนรู้ภาษาอังกฤษ", color: "text-yellow-400" },
 ];
 
 const fadeUp = {
@@ -59,7 +58,7 @@ export default function About() {
 
                             {/* Profile card */}
                             <div className="relative w-64 h-64 sm:w-80 sm:h-80 glass-card overflow-hidden flex items-center justify-center">
-                                {/* Placeholder gradient avatar */}
+                                {/* Background gradient */}
                                 <div
                                     className="absolute inset-0"
                                     style={{
@@ -67,18 +66,36 @@ export default function About() {
                                             "linear-gradient(135deg, #0D1117 0%, #0A1628 40%, #00D4FF11 100%)",
                                     }}
                                 />
-                                <div className="relative z-10 flex flex-col items-center gap-3">
-                                    <div className="w-24 h-24 rounded-full moving-border-gradient p-[2px]">
-                                        <div className="w-full h-full rounded-full bg-dark-card flex items-center justify-center">
-                                            <span className="text-4xl font-black text-gradient-blue-lime">AS</span>
+                                {/* Profile image */}
+                                <div className="relative z-10 w-full h-full">
+                                    <Image
+                                        src="/images/aboutme/profile/profile.png"
+                                        alt="Adison Sompeng"
+                                        fill
+                                        className="object-cover"
+                                        onError={(e) => {
+                                            (e.currentTarget as HTMLImageElement).style.display = "none";
+                                            const fb = e.currentTarget.parentElement?.querySelector(".profile-fallback") as HTMLElement | null;
+                                            if (fb) fb.style.display = "flex";
+                                        }}
+                                    />
+                                    {/* Fallback */}
+                                    <div
+                                        className="profile-fallback absolute inset-0 flex-col items-center justify-center gap-3"
+                                        style={{ display: "flex" }}
+                                    >
+                                        <div className="w-24 h-24 rounded-full moving-border-gradient p-[2px]">
+                                            <div className="w-full h-full rounded-full bg-dark-card flex items-center justify-center">
+                                                <span className="text-4xl font-black text-gradient-blue-lime">AS</span>
+                                            </div>
                                         </div>
+                                        <span className="text-white font-bold text-lg">Adison Sompeng</span>
+                                        <span className="text-slate-500 text-xs">@Adison Sompeng</span>
                                     </div>
-                                    <span className="text-white font-bold text-lg">Adison Sompeng</span>
-                                    <span className="text-slate-500 text-xs">@Adison Sompeng</span>
                                 </div>
 
                                 {/* Glow effect */}
-                                <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-neon-blue/10 to-transparent" />
+                                <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-neon-blue/10 to-transparent pointer-events-none" />
                             </div>
 
                             {/* Location badge */}
@@ -122,10 +139,11 @@ export default function About() {
                             viewport={{ once: true }}
                         >
                             <p className="text-slate-400 leading-relaxed text-base">
-                                เติบโตมาจากจังหวัด<span className="text-neon-lime font-semibold">แพร่</span>{" "}
-                                ภาคเหนือของไทย มีความสนใจพิเศษในเรื่อง Cloud Computing (AWS),
-                                ภาษาญี่ปุ่น, การออกกำลังกาย และการสร้าง Minecraft Server
-                                ผมเชื่อว่าการเขียนโค้ดก็เป็นรูปแบบของงานศิลปะแบบหนึ่ง
+                                ผมเป็นคนมีบุคลิกนิ่งๆ จริงจังกับการทำงาน ชอบการลงมือทำ
+                                มีความสามารถในการบริหารจัดการงานและเวลา ชอบออกกำลังกาย
+                                ทัศนคติเชิงบวก ชอบเรียนรู้สิ่งใหม่และท้าทาย
+                                สามารถทำงานเป็นทีมและพร้อมปรับตัวต่อสถานการณ์ต่างๆ เสมอ
+                                มีความอดทนต่องานและแรงกดดันได้ดี
                             </p>
                         </motion.div>
 
@@ -167,7 +185,7 @@ export default function About() {
                             <p className="text-slate-300 text-sm">
                                 ปัจจุบันกำลังศึกษาและพัฒนาตัวเองในด้าน{" "}
                                 {/* <span className="text-neon-lime font-semibold">AWS Cloud</span> และ{" "} */}
-                                <span className="text-neon-blue font-semibold">Full-stack Development</span>
+                                <span className="text-neon-blue font-semibold">Programming</span>
                             </p>
                         </motion.div>
                     </div>

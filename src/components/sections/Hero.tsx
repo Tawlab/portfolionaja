@@ -24,9 +24,7 @@ const letterVariant = {
 };
 
 const taglines = [
-    { icon: <Cpu size={14} />, text: "Computer Engineering Student" },
-    { icon: <Code2 size={14} />, text: "Full-stack Developer" },
-    { icon: <Wifi size={14} />, text: "IoT Enthusiast" },
+    { icon: <Cpu size={14} />, text: "Computer Engineering Student" }
 ];
 
 export default function Hero() {
