@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const navLinks = [
     { href: "#home", label: "หน้าหลัก" },
     { href: "#about", label: "เกี่ยวกับ" },
-    { href: "#activities", label: "กิจกรรม" },
+    { href: "#activities", label: "ทักษะ" },
     { href: "#works", label: "ผลงาน" },
     { href: "#contact", label: "ติดต่อ" },
 ];
