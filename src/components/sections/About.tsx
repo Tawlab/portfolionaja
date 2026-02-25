@@ -72,26 +72,9 @@ export default function About() {
                                         src="/images/aboutme/profile/profile.png"
                                         alt="Adison Sompeng"
                                         fill
-                                        className="object-cover"
-                                        onError={(e) => {
-                                            (e.currentTarget as HTMLImageElement).style.display = "none";
-                                            const fb = e.currentTarget.parentElement?.querySelector(".profile-fallback") as HTMLElement | null;
-                                            if (fb) fb.style.display = "flex";
-                                        }}
+                                        className="object-cover object-top"
+                                        priority
                                     />
-                                    {/* Fallback */}
-                                    <div
-                                        className="profile-fallback absolute inset-0 flex-col items-center justify-center gap-3"
-                                        style={{ display: "flex" }}
-                                    >
-                                        <div className="w-24 h-24 rounded-full moving-border-gradient p-[2px]">
-                                            <div className="w-full h-full rounded-full bg-dark-card flex items-center justify-center">
-                                                <span className="text-4xl font-black text-gradient-blue-lime">AS</span>
-                                            </div>
-                                        </div>
-                                        <span className="text-white font-bold text-lg">Adison Sompeng</span>
-                                        <span className="text-slate-500 text-xs">@Adison Sompeng</span>
-                                    </div>
                                 </div>
 
                                 {/* Glow effect */}

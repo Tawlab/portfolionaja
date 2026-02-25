@@ -95,18 +95,7 @@ function ProjectImage({ src, alt, color }: { src: string; alt: string; color: st
                 alt={alt}
                 fill
                 className="object-cover"
-                onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.display = "none";
-                    const fb = e.currentTarget.parentElement?.querySelector(".img-fallback") as HTMLElement | null;
-                    if (fb) fb.style.display = "flex";
-                }}
             />
-            <div
-                className="img-fallback absolute inset-0 flex-col items-center justify-center gap-2"
-                style={{ display: "flex", color }}
-            >
-                <ImageIcon size={32} strokeWidth={1.5} />
-            </div>
         </div>
     );
 }
@@ -171,19 +160,6 @@ export default function Works() {
                             className="glass-card p-6 cursor-pointer group relative overflow-hidden"
                             style={{ borderTop: `2px solid ${project.color}44` }}
                         >
-                            {/* Status pill */}
-                            <div className="absolute top-4 right-4 z-10">
-                                <span
-                                    className="text-xs px-2.5 py-1 rounded-full font-medium"
-                                    style={{
-                                        background: `${project.color}15`,
-                                        color: project.color,
-                                        border: `1px solid ${project.color}30`,
-                                    }}
-                                >
-                                    {project.status}
-                                </span>
-                            </div>
 
                             <ProjectImage src={project.image} alt={project.title} color={project.color} />
 

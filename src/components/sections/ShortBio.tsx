@@ -67,7 +67,7 @@ const bioCards = [
 
 export default function ShortBio() {
     return (
-        <section id="bio" className="relative section-padding overflow-hidden">
+        <section id="shortbio" className="relative section-padding overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
