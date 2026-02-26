@@ -12,6 +12,9 @@ const programmingSkills = [
     { name: "SQL", level: 60, color: "#00D4FF" },
     { name: "Java", level: 40, color: "#F89820" },
     { name: "C#", level: 40, color: "#9B4F96" },
+    { name: "Hardware", level: 70, color: "#777BB4" },
+    { name: "Network", level: 50, color: "#F89820" },
+    { name: "Server", level: 50, color: "#F89820" },
 ];
 
 /* ── Tools ── */
@@ -24,14 +27,20 @@ const tools = [
     { name: "Gemini", category: "AI" },
     { name: "ChatGPT", category: "AI" },
     { name: "VNC", category: "Remote" },
+    { name: "Git", category: "Version Control" },
+    { name: "Anydesk", category: "Remote" },
     { name: "CapCut", category: "Creative" },
     { name: "Photoshop", category: "Creative" },
+    { name: "Figma", category: "Creative" },
+    { name: "Canva", category: "Creative" },
+
 ];
 
 /* ── Language Skills ── */
 const languages = [
-    { name: "ภาษาไทย", level: 95, color: "#BAFF29" },
+    { name: "ภาษาไทย (Native)", level: 95, color: "#BAFF29" },
     { name: "English", level: 50, color: "#00D4FF" },
+    { name: "ภาษาญี่ปุ่น", level: 30, color: "#F89820" },
 ];
 
 /* ── Skill Bar ── */
