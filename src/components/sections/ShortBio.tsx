@@ -89,7 +89,7 @@ export default function ShortBio() {
                 </motion.div>
 
                 {/* Bento Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {bioCards.map((card, i) => (
                         <motion.div
                             key={card.id}
@@ -98,7 +98,7 @@ export default function ShortBio() {
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1, duration: 0.5 }}
                             whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                            className={`glass-card p-6 group cursor-default ${card.span === "col-span-1 lg:col-span-2" ? "md:col-span-2 lg:col-span-2" : ""}`}
+                            className={`glass-card p-5 sm:p-6 group cursor-default relative ${card.span === "col-span-1 lg:col-span-2" ? "sm:col-span-2 lg:col-span-2" : ""}`}
                             style={{
                                 borderTop: `2px solid ${card.colorHex}33`,
                             }}

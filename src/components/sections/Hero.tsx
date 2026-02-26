@@ -128,7 +128,7 @@ export default function Hero() {
                     opacity: [0.3, 0.5, 0.3],
                 }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[500px] sm:h-[500px] lg:w-[700px] lg:h-[700px] rounded-full pointer-events-none"
                 style={{
                     background:
                         "radial-gradient(ellipse at center, rgba(0,212,255,0.12) 0%, rgba(186,255,41,0.06) 40%, transparent 70%)",
@@ -153,14 +153,15 @@ export default function Hero() {
                     variants={stagger}
                     initial="hidden"
                     animate="visible"
-                    className="flex items-center justify-center gap-0 sm:gap-2 mb-6"
+                    className="flex items-center justify-center mb-4 sm:mb-6 overflow-hidden"
                 >
                     {CHARS.map((ch, i) => (
                         <motion.span
                             key={i}
                             variants={letterVariant}
-                            className="text-6xl sm:text-8xl lg:text-9xl font-black tracking-tight inline-block"
+                            className="font-black tracking-tight inline-block"
                             style={{
+                                fontSize: "clamp(1.6rem, 6.5vw, 8rem)",
                                 color: i < 6 ? "white" : "#00D4FF",
                                 textShadow: i >= 6 ? "0 0 40px #00D4FF88" : "none",
                             }}

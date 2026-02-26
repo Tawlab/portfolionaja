@@ -9,6 +9,7 @@ const navLinks = [
     { href: "#shortbio", label: "ข้อมูลสั้น" },
     { href: "#activities", label: "ทักษะ" },
     { href: "#works", label: "ผลงาน" },
+    { href: "#experience", label: "ประสบการณ์" },
     { href: "#contact", label: "ติดต่อ" },
 ];
 

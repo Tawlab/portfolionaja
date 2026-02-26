@@ -6,6 +6,7 @@ import Image from "next/image";
 
 const interests = [
     { emoji: "💻", label: "การเขียนโปรแกรม", color: "text-neon-blue" },
+    { emoji: "🛠️", label: "ฮาร์ดแวร์", color: "text-neon-lime" },
     { emoji: "🏋️", label: "การออกกำลังกาย", color: "text-neon-lime" },
     { emoji: "🇺🇸", label: "เรียนรู้ภาษาอังกฤษ", color: "text-yellow-400" },
 ];
@@ -42,7 +43,7 @@ export default function About() {
                 </motion.div>
 
                 {/* Main grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
                     {/* Avatar */}
                     <motion.div
                         initial={{ opacity: 0, x: -60 }}
@@ -57,7 +58,7 @@ export default function About() {
                             <div className="absolute -inset-8 rounded-full border border-dashed border-neon-lime/10 animate-spin-slow [animation-direction:reverse] [animation-duration:30s]" />
 
                             {/* Profile card */}
-                            <div className="relative w-64 h-64 sm:w-80 sm:h-80 glass-card overflow-hidden flex items-center justify-center">
+                            <div className="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 glass-card overflow-hidden flex items-center justify-center">
                                 {/* Background gradient */}
                                 <div
                                     className="absolute inset-0"
@@ -168,7 +169,7 @@ export default function About() {
                             <p className="text-slate-300 text-sm">
                                 ปัจจุบันกำลังศึกษาและพัฒนาตัวเองในด้าน{" "}
                                 {/* <span className="text-neon-lime font-semibold">AWS Cloud</span> และ{" "} */}
-                                <span className="text-neon-blue font-semibold">Programming</span>
+                                <span className="text-neon-blue font-semibold">Programming & Hardware</span>
                             </p>
                         </motion.div>
                     </div>

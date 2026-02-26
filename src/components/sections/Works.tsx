@@ -87,7 +87,7 @@ const certificates = [
 function ProjectImage({ src, alt, color }: { src: string; alt: string; color: string }) {
     return (
         <div
-            className="relative w-full h-40 rounded-xl overflow-hidden mb-4"
+            className="relative w-full h-32 sm:h-40 rounded-xl overflow-hidden mb-4"
             style={{ background: `${color}10`, border: `1px solid ${color}20` }}
         >
             <Image
@@ -235,7 +235,7 @@ export default function Works() {
                         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
                             <motion.div
                                 layoutId={`project-${selected}`}
-                                className="glass-card w-full max-w-lg p-8 relative"
+                                className="glass-card w-full max-w-lg p-6 sm:p-8 relative overflow-y-auto max-h-[85vh]"
                                 style={{
                                     borderTop: `2px solid ${selectedProject.color}66`,
                                     boxShadow: `0 0 80px ${selectedProject.color}22`,

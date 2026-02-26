@@ -91,7 +91,7 @@ export default function Skills() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
                     {/* ── Left: Programming skills ── */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

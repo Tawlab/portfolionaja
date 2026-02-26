@@ -99,8 +99,8 @@ export default function Contact() {
 
                     <div className="relative">
                         <p className="text-slate-400 text-sm mb-2">อีเมลของผม</p>
-                        <div className="flex items-center justify-center gap-3 flex-wrap">
-                            <span className="text-2xl sm:text-3xl font-bold text-white font-mono">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 flex-wrap">
+                            <span className="text-lg sm:text-2xl lg:text-3xl font-bold text-white font-mono break-all sm:break-normal">
                                 adisonsompeng49@gmail.com
                             </span>
                             <motion.button
