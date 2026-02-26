@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Cpu, Code2, Wifi } from "lucide-react";
+import { ArrowRight, Download, Cpu } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CHARS = "Adison Sompeng".split("");
 
@@ -29,6 +30,7 @@ const taglines = [
 
 export default function Hero() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
+    const { t } = useLanguage();
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -145,7 +147,7 @@ export default function Hero() {
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-xs text-slate-400 mb-10 border border-neon-blue/20"
                 >
                     <span className="w-2 h-2 rounded-full bg-neon-lime animate-pulse2" />
-                    พร้อมรับโปรเจกต์ใหม่ · Available for opportunities
+                    {t("พร้อมรับโปรเจกต์ใหม่ · Available for opportunities", "Available for new opportunities")}
                 </motion.div>
 
                 {/* Animated name */}
@@ -199,9 +201,14 @@ export default function Hero() {
                     transition={{ delay: 1.0 }}
                     className="text-slate-400 text-base sm:text-lg mb-12 max-w-2xl mx-auto leading-relaxed"
                 >
-                    นักศึกษาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี
+                    {t(
+                        "นักศึกษาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี",
+                        "Computer Engineering Student, RMUTT"
+                    )}
                     <br className="hidden sm:block" />
-                    <span className="text-slate-300"> สร้างสรรค์ผลงานด้วย Code และ Passion</span>
+                    <span className="text-slate-300">
+                        {t(" สร้างสรรค์ผลงานด้วย Code และ Passion", " Building things with Code & Passion")}
+                    </span>
                 </motion.p>
 
                 {/* CTA Buttons */}
@@ -217,7 +224,7 @@ export default function Hero() {
                         onClick={() => scrollTo("#works")}
                         className="group flex items-center gap-2 px-8 py-3.5 rounded-xl bg-neon-blue text-dark-bg font-bold text-sm tracking-wide hover:shadow-neon-blue transition-all duration-300"
                     >
-                        ดูผลงาน
+                        {t("ดูผลงาน", "View Works")}
                         <ArrowRight
                             size={16}
                             className="group-hover:translate-x-1 transition-transform"
@@ -231,7 +238,7 @@ export default function Hero() {
                         className="glow-btn flex items-center gap-2 text-slate-300 hover:text-white bg-white/5"
                     >
                         <Download size={16} />
-                        ติดต่อ / Resume
+                        {t("ติดต่อ / Resume", "Contact / Resume")}
                     </motion.button>
                 </motion.div>
 

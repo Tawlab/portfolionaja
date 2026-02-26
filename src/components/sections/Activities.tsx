@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Code2, Wrench, Languages } from "lucide-react";
 
 /* ── Programming Skills ── */
@@ -38,9 +39,9 @@ const tools = [
 
 /* ── Language Skills ── */
 const languages = [
-    { name: "ภาษาไทย (Native)", level: 95, color: "#BAFF29" },
-    { name: "English", level: 50, color: "#00D4FF" },
-    { name: "ภาษาญี่ปุ่น", level: 30, color: "#F89820" },
+    { nameTh: "ภาษาไทย (เจ้าของภาษา)", nameEn: "Thai (Native)", level: 95, color: "#BAFF29" },
+    { nameTh: "English", nameEn: "English", level: 50, color: "#00D4FF" },
+    { nameTh: "ภาษาญี่ปุ่น (เบื้องต้น)", nameEn: "Japanese (Beginner)", level: 30, color: "#F89820" },
 ];
 
 /* ── Skill Bar ── */
@@ -76,6 +77,7 @@ function SkillBar({ name, level, color, delay }: { name: string; level: number; 
 }
 
 export default function Skills() {
+    const { t, lang } = useLanguage();
     return (
         <section id="activities" className="relative section-padding overflow-hidden">
             <div className="absolute inset-0 mesh-bg pointer-events-none" />
@@ -88,15 +90,14 @@ export default function Skills() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <span className="text-neon-purple text-sm font-mono tracking-widest uppercase">
-                        03. ทักษะ
+                    <span className="text-neon-blue text-sm font-mono tracking-widest uppercase">
+                        {t("03. ทักษะ", "03. Skills")}
                     </span>
                     <h2 className="mt-3 text-4xl sm:text-5xl font-black text-white">
-                        Skills &{" "}
-                        <span className="text-gradient-purple-blue">Tools</span>
+                        Skills <span className="text-gradient-blue-lime">&amp; Tools</span>
                     </h2>
                     <p className="mt-4 text-slate-400 max-w-xl mx-auto">
-                        ภาษาโปรแกรม เครื่องมือ และทักษะที่ใช้ในการพัฒนา
+                        {t("ทักษะการเขียนโปรแกรม เครื่องมือที่ใช้ และความสามารถด้านภาษา", "Programming skills, tools I use, and language proficiency")}
                     </p>
                 </motion.div>
 
@@ -109,10 +110,12 @@ export default function Skills() {
                         className="glass-card p-7"
                     >
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="p-2 rounded-xl bg-neon-purple/10 border border-neon-purple/20">
-                                <Code2 size={20} className="text-neon-purple" />
+                            <div className="p-2 rounded-xl bg-neon-blue/10 border border-neon-blue/20">
+                                <Code2 size={20} className="text-neon-blue" />
                             </div>
-                            <h3 className="text-lg font-bold text-white">Programming Languages</h3>
+                            <h3 className="text-lg font-bold text-white">
+                                {t("💻 ทักษะการเขียนโปรแกรม", "💻 Programming Skills")}
+                            </h3>
                         </div>
 
                         <div className="space-y-5">
@@ -133,10 +136,12 @@ export default function Skills() {
                             className="glass-card p-7 flex-1"
                         >
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="p-2 rounded-xl bg-neon-blue/10 border border-neon-blue/20">
-                                    <Wrench size={20} className="text-neon-blue" />
+                                <div className="p-2 rounded-xl bg-neon-purple/10 border border-neon-purple/20">
+                                    <Wrench size={20} className="text-neon-purple" />
                                 </div>
-                                <h3 className="text-lg font-bold text-white">Tools & Software</h3>
+                                <h3 className="text-lg font-bold text-white">
+                                    {t("🛠️ เครื่องมือและซอฟต์แวร์", "🛠️ Tools & Software")}
+                                </h3>
                             </div>
 
                             <div className="flex flex-wrap gap-2">
@@ -169,12 +174,20 @@ export default function Skills() {
                                 <div className="p-2 rounded-xl bg-neon-lime/10 border border-neon-lime/20">
                                     <Languages size={20} className="text-neon-lime" />
                                 </div>
-                                <h3 className="text-lg font-bold text-white">Language Skills</h3>
+                                <h3 className="text-lg font-bold text-white">
+                                    {t("🗣️ ทักษะทางภาษา", "🗣️ Language Skills")}
+                                </h3>
                             </div>
 
                             <div className="space-y-5">
-                                {languages.map((lang, i) => (
-                                    <SkillBar key={lang.name} {...lang} delay={i * 0.1} />
+                                {languages.map((lang_item, i) => (
+                                    <SkillBar
+                                        key={lang_item.nameTh}
+                                        name={lang === "th" ? lang_item.nameTh : lang_item.nameEn}
+                                        level={lang_item.level}
+                                        color={lang_item.color}
+                                        delay={i * 0.1}
+                                    />
                                 ))}
                             </div>
                         </motion.div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/ui/NavBar";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const inter = Inter({
     variable: "--font-geist-sans",
@@ -14,22 +15,26 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "ITaw154 — Portfolio | Computer Engineering",
+    title: "Adison Sompeng — Portfolio",
     description:
-        "Portfolio ของ ITaw154 นักศึกษาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี (RMUTT) — Full-stack Developer & IoT Enthusiast",
+        "Portfolio ของ Adison Sompeng นักศึกษาวิศวกรรมคอมพิวเตอร์ มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี (RMUTT)",
     keywords: [
-        "ITaw154",
+        "Adison Sompeng",
         "Portfolio",
         "Computer Engineering",
         "RMUTT",
-        "Full-stack Developer",
-        "IoT",
-        "React",
+        "Developer",
+        "IT Support",
         "Next.js",
     ],
+    icons: {
+        icon: "/favicon.png",
+        shortcut: "/favicon.png",
+        apple: "/favicon.png",
+    },
     openGraph: {
-        title: "ITaw154 — Portfolio",
-        description: "นักศึกษาวิศวกรรมคอมพิวเตอร์ | Full-stack Developer | IoT Enthusiast",
+        title: "Adison Sompeng — Portfolio",
+        description: "นักศึกษาวิศวกรรมคอมพิวเตอร์ | Developer | IT Support",
         type: "website",
     },
 };
@@ -44,8 +49,10 @@ export default function RootLayout({
             <body
                 className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-dark-bg text-slate-100 min-h-screen`}
             >
-                <NavBar />
-                {children}
+                <LanguageProvider>
+                    <NavBar />
+                    {children}
+                </LanguageProvider>
             </body>
         </html>
     );

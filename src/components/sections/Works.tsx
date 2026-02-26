@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Github, Award, ImageIcon } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 /* ── Projects ── */
 const projects = [
@@ -12,13 +13,16 @@ const projects = [
         image: "/images/projects/MBS.png",
         title: "MBS",
         subtitle: "Mobile Shop Management System",
-        short: "ระบบบริหารจัดการร้านจำหน่ายมือถือ ครอบคลุมการขาย การซ่อม และคลังสินค้า (โปรเจกต์จบ ป.ตรี)",
-        description:
-            "ระบบบริหารจัดการร้านจำหน่ายมือถือสำหรับโปรเจกต์จบระดับปริญญาตรี พัฒนาด้วย PHP, HTML, CSS, JavaScript และ Bootstrap รองรับการจัดการข้อมูลอย่างยืดหยุ่น ฟีเจอร์หลักประกอบด้วยระบบจัดการข้อมูลการขาย ระบบซ่อม ระบบบริหารคลังสินค้า (รับเข้า–นำออก) การสร้าง QR Code ด้วย PHP Library และการแจ้งเตือนผ่านอีเมลด้วย PHPMailer",
+        shortTh: "ระบบบริหารจัดการร้านจำหน่ายมือถือ ครอบคลุมการขาย การซ่อม และคลังสินค้า (โปรเจกต์จบ ป.ตรี)",
+        shortEn: "Mobile shop management covering sales, repairs, and inventory. (Senior Project)",
+        descTh: "ระบบบริหารจัดการร้านจำหน่ายมือถือสำหรับโปรเจกต์จบระดับปริญญาตรี พัฒนาด้วย PHP, HTML, CSS, JavaScript และ Bootstrap รองรับการจัดการข้อมูลอย่างยืดหยุ่น ฟีเจอร์หลักประกอบด้วยระบบจัดการข้อมูลการขาย ระบบซ่อม ระบบบริหารคลังสินค้า (รับเข้า–นำออก) การสร้าง QR Code ด้วย PHP Library และการแจ้งเตือนผ่านอีเมลด้วย PHPMailer",
+        descEn: "Senior project: a mobile shop management system built with PHP, HTML, CSS, JS, and Bootstrap. Features include sales management, repair tracking, inventory control (in/out), QR Code generation via PHP Library, and email notifications via PHPMailer.",
         tags: ["PHP", "HTML", "CSS", "JavaScript", "Bootstrap", "PHPMailer", "QR Code"],
         color: "#BAFF29",
-        role: "Full-stack Developer",
-        type: "Senior Project",
+        roleTh: "Full-stack Developer",
+        roleEn: "Full-stack Developer",
+        typeTh: "โปรเจกต์จบการศึกษา",
+        typeEn: "Senior Project",
         status: "Completed",
     },
     {
@@ -26,13 +30,16 @@ const projects = [
         image: "/images/projects/QD.png",
         title: "QD",
         subtitle: "Document Management System",
-        short: "ระบบจัดการเอกสารภายในองค์กร เพื่อเก็บประวัติและติดตามเอกสาร (Freelance)",
-        description:
-            "ระบบจัดการเอกสารภายในองค์กรในรูปแบบ Freelance ช่วยให้บุคลากรสามารถเก็บประวัติและติดตามสถานะเอกสารได้อย่างมีประสิทธิภาพ ลดการใช้กระดาษและเพิ่มความสะดวกในการค้นหา พร้อมระบบแจ้งเตือนผ่านอีเมลด้วย PHPMailer พัฒนาด้วย PHP, HTML, CSS, JavaScript และ Bootstrap",
+        shortTh: "ระบบจัดการเอกสารภายในองค์กร เพื่อเก็บประวัติและติดตามเอกสาร (Freelance)",
+        shortEn: "Internal document management system for tracking document history and status. (Freelance)",
+        descTh: "ระบบจัดการเอกสารภายในองค์กรในรูปแบบ Freelance ช่วยให้บุคลากรสามารถเก็บประวัติและติดตามสถานะเอกสารได้อย่างมีประสิทธิภาพ ลดการใช้กระดาษและเพิ่มความสะดวกในการค้นหา พร้อมระบบแจ้งเตือนผ่านอีเมลด้วย PHPMailer พัฒนาด้วย PHP, HTML, CSS, JavaScript และ Bootstrap",
+        descEn: "Freelance document management system allowing staff to store and track document status efficiently. Reduces paper use, improves searchability, and includes email notifications via PHPMailer. Built with PHP, HTML, CSS, JS, and Bootstrap.",
         tags: ["PHP", "HTML", "CSS", "JavaScript", "Bootstrap", "PHPMailer"],
         color: "#00D4FF",
-        role: "Full-stack Developer",
-        type: "Freelance",
+        roleTh: "Full-stack Developer",
+        roleEn: "Full-stack Developer",
+        typeTh: "Freelance",
+        typeEn: "Freelance",
         status: "Completed",
     },
     {
@@ -40,13 +47,16 @@ const projects = [
         image: "/images/projects/QS.png",
         title: "QS",
         subtitle: "Hospital Queue Booking System",
-        short: "ระบบจองคิวโรงพยาบาล เพื่อความสะดวกของผู้ใช้และบุคลากร (Freelance)",
-        description:
-            "ระบบจองคิวเข้าใช้บริการภายในโรงพยาบาลในรูปแบบ Freelance ผู้ใช้สามารถจองคิวล่วงหน้าและบุคลากรสามารถติดตามและจัดการคิวได้แบบ Real-time ช่วยลดความแออัดและเพิ่มประสิทธิภาพการให้บริการ มีระบบเก็บประวัติการเข้าใช้บริการ พัฒนาด้วย PHP, HTML, CSS, JavaScript และ Bootstrap",
+        shortTh: "ระบบจองคิวโรงพยาบาล เพื่อความสะดวกของผู้ใช้และบุคลากร (Freelance)",
+        shortEn: "Hospital queue booking system for patient convenience and staff management. (Freelance)",
+        descTh: "ระบบจองคิวเข้าใช้บริการภายในโรงพยาบาลในรูปแบบ Freelance ผู้ใช้สามารถจองคิวล่วงหน้าและบุคลากรสามารถติดตามและจัดการคิวได้แบบ Real-time ช่วยลดความแออัดและเพิ่มประสิทธิภาพการให้บริการ มีระบบเก็บประวัติการเข้าใช้บริการ พัฒนาด้วย PHP, HTML, CSS, JavaScript และ Bootstrap",
+        descEn: "Freelance hospital queue booking system. Patients book in advance; staff manage queues in real-time. Reduces crowding, improves service quality, and maintains visit history. Built with PHP, HTML, CSS, JS, and Bootstrap.",
         tags: ["PHP", "HTML", "CSS", "JavaScript", "Bootstrap"],
         color: "#B24BF3",
-        role: "Full-stack Developer",
-        type: "Freelance",
+        roleTh: "Full-stack Developer",
+        roleEn: "Full-stack Developer",
+        typeTh: "Freelance",
+        typeEn: "Freelance",
         status: "Completed",
     },
 ];
@@ -57,28 +67,32 @@ const certificates = [
         id: "gcdp1",
         image: "/images/certificates/GCDP_1_Cer.png",
         name: "Global Capstone Design Project (GCDP) — Thailand",
-        org: "คณะวิศวกรรมศาสตร์ มทร.ธัญบุรี (RMUTT) × International University",
+        orgTh: "คณะวิศวกรรมศาสตร์ มทร.ธัญบุรี (RMUTT) × International University",
+        orgEn: "Faculty of Engineering, RMUTT × International University",
         color: "#00D4FF",
     },
     {
         id: "gcdp2",
         image: "/images/certificates/GCDP_2_Cer.png",
         name: "Global Capstone Design Project (GCDP) — South Korea",
-        org: "คณะวิศวกรรมศาสตร์ มทร.ธัญบุรี (RMUTT) × International University",
+        orgTh: "คณะวิศวกรรมศาสตร์ มทร.ธัญบุรี (RMUTT) × International University",
+        orgEn: "Faculty of Engineering, RMUTT × International University",
         color: "#BAFF29",
     },
     {
         id: "html-cer",
         image: "/images/certificates/HTML_Cer.png",
         name: "HTML Certificate",
-        org: "Sololearn",
+        orgTh: "Sololearn",
+        orgEn: "Sololearn",
         color: "#E34F26",
     },
     {
         id: "copilot",
         image: "/images/certificates/Copilot_Cer.png",
         name: "AI Copilot — Effective AI Usage Workshop",
-        org: "อบรมการใช้งาน AI อย่างมีประสิทธิภาพ",
+        orgTh: "อบรมการใช้งาน AI อย่างมีประสิทธิภาพ",
+        orgEn: "Effective AI Usage Workshop",
         color: "#B24BF3",
     },
 ];
@@ -119,6 +133,7 @@ function CertImage({ src, alt }: { src: string; alt: string }) {
 /* ── Main Component ── */
 export default function Works() {
     const [selected, setSelected] = useState<string | null>(null);
+    const { t, lang } = useLanguage();
     const selectedProject = projects.find((p) => p.id === selected);
 
     return (
@@ -133,24 +148,26 @@ export default function Works() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <span className="text-neon-blue text-sm font-mono tracking-widest uppercase">
-                        04. ผลงาน
+                    <span className="text-neon-lime text-sm font-mono tracking-widest uppercase">
+                        {t("04. ผลงาน", "04. Works")}
                     </span>
                     <h2 className="mt-3 text-4xl sm:text-5xl font-black text-white">
-                        Works &{" "}
-                        <span className="text-gradient-blue-lime">Projects</span>
+                        {t("ผลงาน", "Works")} <span className="text-gradient-blue-lime">&amp; Projects</span>
                     </h2>
                     <p className="mt-4 text-slate-400 max-w-xl mx-auto">
-                        โปรเจกต์ที่ผมภูมิใจในการพัฒนา — คลิกเพื่อดูรายละเอียด
+                        {t("โปรเจกต์ที่ผมภูมิใจในการพัฒนา — คลิกเพื่อดูรายละเอียด", "Projects I'm proud of — click to view details")}
                     </p>
                 </motion.div>
 
                 {/* Projects grid */}
+                <h3 className="text-xl font-bold text-white mb-6">
+                    {t("💻 โปรเจกต์", "💻 Projects")}
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                     {projects.map((project, i) => (
                         <motion.div
                             key={project.id}
-                            layoutId={`project-${project.id}`}
+                            layoutId={`project - ${project.id} `}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -158,7 +175,7 @@ export default function Works() {
                             whileHover={{ y: -8, scale: 1.02 }}
                             onClick={() => setSelected(project.id)}
                             className="glass-card p-6 cursor-pointer group relative overflow-hidden"
-                            style={{ borderTop: `2px solid ${project.color}44` }}
+                            style={{ borderTop: `2px solid ${project.color} 44` }}
                         >
 
                             <ProjectImage src={project.image} alt={project.title} color={project.color} />
@@ -169,7 +186,9 @@ export default function Works() {
                             <p className="text-sm font-medium mb-3" style={{ color: project.color }}>
                                 {project.subtitle}
                             </p>
-                            <p className="text-slate-400 text-sm leading-relaxed mb-5">{project.short}</p>
+                            <p className="text-slate-400 text-sm leading-relaxed mb-5">
+                                {lang === "th" ? project.shortTh : project.shortEn}
+                            </p>
 
                             <div className="flex flex-wrap gap-2">
                                 {project.tags.slice(0, 3).map((tag) => (
@@ -182,7 +201,6 @@ export default function Works() {
                                 )}
                             </div>
 
-                            {/* Hover glow */}
                             <div
                                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
                                 style={{ background: `radial-gradient(ellipse at top left, ${project.color}08, transparent 60%)` }}
@@ -201,7 +219,7 @@ export default function Works() {
                     <div className="flex items-center gap-3 mb-6">
                         <Award className="text-neon-lime" size={24} />
                         <h3 className="text-xl font-bold text-white">
-                            ใบรับรอง & <span className="text-neon-lime">Certificates</span>
+                            {t("🎓 ใบรับรอง &amp; Certificates", "🎓 Certificates")}
                         </h3>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -213,7 +231,9 @@ export default function Works() {
                                 <CertImage src={cert.image} alt={cert.name} />
                                 <div>
                                     <p className="text-white text-sm font-semibold leading-snug">{cert.name}</p>
-                                    <p className="text-slate-500 text-xs mt-1">{cert.org}</p>
+                                    <p className="text-slate-500 text-xs mt-1">
+                                        {lang === "th" ? cert.orgTh : cert.orgEn}
+                                    </p>
                                 </div>
                             </div>
                         ))}
@@ -260,8 +280,12 @@ export default function Works() {
                                 </p>
 
                                 <div className="flex gap-3 mb-5">
-                                    <span className="tag text-xs">{selectedProject.type}</span>
-                                    <span className="tag text-xs">{selectedProject.role}</span>
+                                    <span className="tag text-xs">
+                                        {lang === "th" ? selectedProject.typeTh : selectedProject.typeEn}
+                                    </span>
+                                    <span className="tag text-xs">
+                                        {lang === "th" ? selectedProject.roleTh : selectedProject.roleEn}
+                                    </span>
                                 </div>
 
                                 <div
@@ -270,7 +294,7 @@ export default function Works() {
                                 />
 
                                 <p className="text-slate-300 leading-relaxed text-sm mb-6">
-                                    {selectedProject.description}
+                                    {lang === "th" ? selectedProject.descTh : selectedProject.descEn}
                                 </p>
 
                                 <div className="flex flex-wrap gap-2 mb-6">

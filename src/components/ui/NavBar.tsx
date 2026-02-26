@@ -1,26 +1,26 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const navLinks = [
-    { href: "#home", label: "หน้าหลัก" },
-    { href: "#about", label: "เกี่ยวกับ" },
-    { href: "#shortbio", label: "ข้อมูลสั้น" },
-    { href: "#activities", label: "ทักษะ" },
-    { href: "#works", label: "ผลงาน" },
-    { href: "#experience", label: "ประสบการณ์" },
-    { href: "#contact", label: "ติดต่อ" },
+    { href: "#home", th: "หน้าหลัก", en: "Home" },
+    { href: "#about", th: "เกี่ยวกับ", en: "About" },
+    { href: "#shortbio", th: "ข้อมูลสั้น", en: "Bio" },
+    { href: "#activities", th: "ทักษะ", en: "Skills" },
+    { href: "#works", th: "ผลงาน", en: "Works" },
+    { href: "#experience", th: "ประสบการณ์", en: "Experience" },
+    { href: "#contact", th: "ติดต่อ", en: "Contact" },
 ];
 
 export default function NavBar() {
     const [scrolled, setScrolled] = useState(false);
     const [active, setActive] = useState("#home");
+    const { lang, toggleLang, t } = useLanguage();
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 40);
-        };
+        const handleScroll = () => setScrolled(window.scrollY > 40);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -28,10 +28,7 @@ export default function NavBar() {
     const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
         setActive(href);
-        const el = document.querySelector(href);
-        if (el) {
-            el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
+        document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
     return (
@@ -40,8 +37,8 @@ export default function NavBar() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                ? "bg-dark-bg/80 backdrop-blur-2xl border-b border-white/5 shadow-lg"
-                : "bg-transparent"
+                    ? "bg-dark-bg/80 backdrop-blur-2xl border-b border-white/5 shadow-lg"
+                    : "bg-transparent"
                 }`}
         >
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -63,16 +60,16 @@ export default function NavBar() {
                     </span>
                 </motion.a>
 
-                {/* Links */}
-                <ul className="hidden md:flex items-center gap-1">
+                {/* Desktop links */}
+                <ul className="hidden lg:flex items-center gap-0.5">
                     {navLinks.map((link) => (
                         <li key={link.href}>
                             <a
                                 href={link.href}
                                 onClick={(e) => handleNav(e, link.href)}
-                                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 block ${active === link.href
-                                    ? "text-neon-blue"
-                                    : "text-slate-400 hover:text-white"
+                                className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 block ${active === link.href
+                                        ? "text-neon-blue"
+                                        : "text-slate-400 hover:text-white"
                                     }`}
                             >
                                 {active === link.href && (
@@ -82,23 +79,67 @@ export default function NavBar() {
                                         transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                                     />
                                 )}
-                                <span className="relative z-10">{link.label}</span>
+                                <span className="relative z-10">{lang === "th" ? link.th : link.en}</span>
                             </a>
                         </li>
                     ))}
                 </ul>
 
-                {/* CTA */}
-                <a
-                    href="#contact"
-                    onClick={(e) => handleNav(e, "#contact")}
-                    className="hidden md:block glow-btn text-neon-blue bg-neon-blue/5 hover:bg-neon-blue/10 hover:shadow-neon-blue transition-all"
-                >
-                    ติดต่อผม
-                </a>
+                {/* Right side: Language toggle + CTA */}
+                <div className="flex items-center gap-2">
+                    {/* Language Toggle Button */}
+                    <motion.button
+                        onClick={toggleLang}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 hover:bg-white/10 hover:border-neon-blue/30 transition-all duration-200 text-sm font-medium"
+                        title={lang === "th" ? "Switch to English" : "เปลี่ยนเป็นภาษาไทย"}
+                    >
+                        <AnimatePresence mode="wait">
+                            <motion.span
+                                key={lang}
+                                initial={{ opacity: 0, y: -6 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 6 }}
+                                transition={{ duration: 0.15 }}
+                                className="flex items-center gap-1.5"
+                            >
+                                <span className="text-base leading-none">
+                                    {lang === "th" ? "🇹🇭" : "🇺🇸"}
+                                </span>
+                                <span className="text-slate-300 font-mono text-xs tracking-wider">
+                                    {lang === "th" ? "TH" : "EN"}
+                                </span>
+                            </motion.span>
+                        </AnimatePresence>
+                        {/* toggle indicator */}
+                        <span className="text-slate-600 text-xs">⇄</span>
+                        <AnimatePresence mode="wait">
+                            <motion.span
+                                key={lang + "-next"}
+                                initial={{ opacity: 0, y: -6 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 6 }}
+                                transition={{ duration: 0.15 }}
+                                className="text-slate-500 font-mono text-xs tracking-wider"
+                            >
+                                {lang === "th" ? "EN" : "TH"}
+                            </motion.span>
+                        </AnimatePresence>
+                    </motion.button>
 
-                {/* Mobile hamburger */}
-                <MobileMenu onNav={handleNav} />
+                    {/* CTA — desktop only */}
+                    <a
+                        href="#contact"
+                        onClick={(e) => handleNav(e, "#contact")}
+                        className="hidden md:block glow-btn text-neon-blue bg-neon-blue/5 hover:bg-neon-blue/10 hover:shadow-neon-blue transition-all text-sm"
+                    >
+                        {t("ติดต่อผม", "Contact")}
+                    </a>
+
+                    {/* Mobile hamburger */}
+                    <MobileMenu onNav={handleNav} lang={lang} />
+                </div>
             </nav>
         </motion.header>
     );
@@ -106,13 +147,15 @@ export default function NavBar() {
 
 function MobileMenu({
     onNav,
+    lang,
 }: {
     onNav: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
+    lang: "th" | "en";
 }) {
     const [open, setOpen] = useState(false);
 
     return (
-        <div className="md:hidden">
+        <div className="lg:hidden">
             <button
                 onClick={() => setOpen(!open)}
                 className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 transition-colors"
@@ -152,7 +195,7 @@ function MobileMenu({
                             }}
                             className="py-2 text-slate-300 hover:text-neon-blue transition-colors font-medium"
                         >
-                            {link.label}
+                            {lang === "th" ? link.th : link.en}
                         </a>
                     ))}
                 </motion.div>

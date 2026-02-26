@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { MapPin, GraduationCap, Heart, Coffee } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const interests = [
     { emoji: "💻", label: "การเขียนโปรแกรม", color: "text-neon-blue" },
@@ -21,6 +22,7 @@ const fadeUp = {
 };
 
 export default function About() {
+    const { t } = useLanguage();
     return (
         <section id="about" className="relative section-padding overflow-hidden">
             <div className="absolute inset-0 mesh-bg pointer-events-none" />
@@ -35,10 +37,10 @@ export default function About() {
                     className="text-center mb-16"
                 >
                     <span className="text-neon-blue text-sm font-mono tracking-widest uppercase">
-                        01. เกี่ยวกับผม
+                        {t("01. เกี่ยวกับผม", "01. About Me")}
                     </span>
                     <h2 className="mt-3 text-4xl sm:text-5xl font-black text-white">
-                        About <span className="text-gradient-blue-lime">Me</span>
+                        {t("เกี่ยวกับ", "About")} <span className="text-gradient-blue-lime">Me</span>
                     </h2>
                 </motion.div>
 
@@ -105,13 +107,20 @@ export default function About() {
                         >
                             <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
                                 <GraduationCap className="text-neon-blue" size={24} />
-                                สวัสดีครับ ผมอดิศร สมเป็ง
+                                {t("สวัสดีครับ ผมอดิศร สมเป็ง", "Hi, I'm Adison Sompeng")}
                             </h3>
                             <p className="text-slate-300 leading-relaxed text-base">
-                                ผมเป็นนักศึกษาสาขา <span className="text-neon-blue font-semibold">วิศวกรรมคอมพิวเตอร์</span>{" "}
-                                มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี (RMUTT) ปทุมธานี
-                                มีความหลงใหลในการพัฒนาซอฟต์แวร์ทั้งฝั่ง Frontend และ Backend
-                                รวมถึงการสร้างสรรค์ผลงานด้าน IoT
+                                {t(
+                                    "ผมเป็นนักศึกษาสาขา",
+                                    "I'm a"
+                                )}{" "}
+                                <span className="text-neon-blue font-semibold">
+                                    {t("วิศวกรรมคอมพิวเตอร์", "Computer Engineering")}
+                                </span>{" "}
+                                {t(
+                                    "มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี (RMUTT) ปทุมธานี มีความหลงใหลในการพัฒนาซอฟต์แวร์และฮาร์ดแวร์",
+                                    "student at Rajamangala University of Technology Thanyaburi (RMUTT), Pathum Thani, passionate about software and hardware development."
+                                )}
                             </p>
                         </motion.div>
 
@@ -123,11 +132,10 @@ export default function About() {
                             viewport={{ once: true }}
                         >
                             <p className="text-slate-400 leading-relaxed text-base">
-                                ผมเป็นคนมีบุคลิกนิ่งๆ จริงจังกับการทำงาน ชอบการลงมือทำ
-                                มีความสามารถในการบริหารจัดการงานและเวลา ชอบออกกำลังกาย
-                                ทัศนคติเชิงบวก ชอบเรียนรู้สิ่งใหม่และท้าทาย
-                                สามารถทำงานเป็นทีมและพร้อมปรับตัวต่อสถานการณ์ต่างๆ เสมอ
-                                มีความอดทนต่องานและแรงกดดันได้ดี
+                                {t(
+                                    "ผมเป็นคนมีบุคลิกนิ่งๆ จริงจังกับการทำงาน ชอบการลงมือทำ มีความสามารถในการบริหารจัดการงานและเวลา ชอบออกกำลังกาย ทัศนคติเชิงบวก ชอบเรียนรู้สิ่งใหม่และท้าทาย สามารถทำงานเป็นทีมและพร้อมปรับตัวต่อสถานการณ์ต่างๆ เสมอ มีความอดทนต่องานและแรงกดดันได้ดี",
+                                    "I have a calm, focused personality. I enjoy hands-on work, am good at time management, love exercising, stay positive, and love learning new challenges. I work well in teams, adapt easily, and handle pressure well."
+                                )}
                             </p>
                         </motion.div>
 
@@ -140,7 +148,7 @@ export default function About() {
                         >
                             <div className="flex items-center gap-2 mb-3">
                                 <Heart size={14} className="text-red-400" />
-                                <span className="text-slate-400 text-sm font-medium">ความสนใจ / Interests</span>
+                                <span className="text-slate-400 text-sm font-medium">{t("ความสนใจ / Interests", "Interests")}</span>
                             </div>
                             <div className="flex flex-wrap gap-3">
                                 {interests.map((item) => (
@@ -167,9 +175,8 @@ export default function About() {
                         >
                             <Coffee className="text-neon-lime shrink-0" size={18} />
                             <p className="text-slate-300 text-sm">
-                                ปัจจุบันกำลังศึกษาและพัฒนาตัวเองในด้าน{" "}
-                                {/* <span className="text-neon-lime font-semibold">AWS Cloud</span> และ{" "} */}
-                                <span className="text-neon-blue font-semibold">Programming & Hardware</span>
+                                {t("ปัจจุบันกำลังศึกษาและพัฒนาตัวเองในด้าน", "Currently studying and developing skills in")}{" "}
+                                <span className="text-neon-blue font-semibold">Programming &amp; Hardware</span>
                             </p>
                         </motion.div>
                     </div>

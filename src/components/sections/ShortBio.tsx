@@ -3,32 +3,44 @@
 import { motion } from "framer-motion";
 import {
     GraduationCap, Code2, Wrench, Languages,
-    Cloud, Smartphone, Globe, Monitor, Cpu, BookOpen
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const bioCards = [
     {
         id: "education",
         icon: <GraduationCap size={22} />,
-        title: "การศึกษา",
+        titleTh: "การศึกษา",
+        titleEn: "Education",
         subtitle: "Education",
         color: "neon-blue",
         colorHex: "#00D4FF",
-        items: [
+        itemsTh: [
             "🎓 วิศวกรรมคอมพิวเตอร์ (B.Eng.)",
             "🏫 มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี (RMUTT)",
             "📍 ปทุมธานี, ประเทศไทย",
+        ],
+        itemsEn: [
+            "🎓 Computer Engineering (B.Eng.)",
+            "🏫 Rajamangala University of Technology Thanyaburi (RMUTT)",
+            "📍 Pathum Thani, Thailand",
         ],
         span: "col-span-1 lg:col-span-2",
     },
     {
         id: "skills",
         icon: <Code2 size={22} />,
-        title: "ทักษะการพัฒนา",
+        titleTh: "ทักษะการพัฒนา",
+        titleEn: "Development Skills",
         subtitle: "Development Skills",
         color: "neon-lime",
         colorHex: "#BAFF29",
-        items: [
+        itemsTh: [
+            "📱 Mobile: .NET MAUI, C#, Flutter",
+            "🌐 Web: PHP, HTML/CSS, JavaScript, Bootstrap",
+            "🗄️ Database: MySQL",
+        ],
+        itemsEn: [
             "📱 Mobile: .NET MAUI, C#, Flutter",
             "🌐 Web: PHP, HTML/CSS, JavaScript, Bootstrap",
             "🗄️ Database: MySQL",
@@ -38,11 +50,18 @@ const bioCards = [
     {
         id: "tools",
         icon: <Wrench size={22} />,
-        title: "เครื่องมือ",
+        titleTh: "เครื่องมือ",
+        titleEn: "Tools & Technologies",
         subtitle: "Tools & Technologies",
         color: "neon-purple",
         colorHex: "#B24BF3",
-        items: [
+        itemsTh: [
+            "🐳 Docker & Container",
+            "📡 ESP32 / IoT",
+            "🔧 Git & GitHub",
+            "✏️ VS Code, Visual Studio",
+        ],
+        itemsEn: [
             "🐳 Docker & Container",
             "📡 ESP32 / IoT",
             "🔧 Git & GitHub",
@@ -53,19 +72,27 @@ const bioCards = [
     {
         id: "languages",
         icon: <Languages size={22} />,
-        title: "ภาษา",
+        titleTh: "ภาษา",
+        titleEn: "Languages",
         subtitle: "Languages",
         color: "neon-blue",
         colorHex: "#00D4FF",
-        items: [
+        itemsTh: [
             "🇹🇭 ภาษาไทย (เจ้าของภาษา)",
-            "🇺🇸 English ",
+            "🇺🇸 English",
+            "🇯🇵 ภาษาญี่ปุ่น (เบื้องต้น)",
+        ],
+        itemsEn: [
+            "🇹🇭 Thai (Native)",
+            "🇺🇸 English (Intermediate)",
+            "🇯🇵 Japanese (Beginner)",
         ],
         span: "col-span-1",
     },
 ];
 
 export default function ShortBio() {
+    const { t, lang } = useLanguage();
     return (
         <section id="shortbio" className="relative section-padding overflow-hidden">
             <div className="max-w-7xl mx-auto">
@@ -78,13 +105,13 @@ export default function ShortBio() {
                     className="text-center mb-16"
                 >
                     <span className="text-neon-lime text-sm font-mono tracking-widest uppercase">
-                        02. ประวัติย่อ
+                        {t("02. ประวัติย่อ", "02. Short Bio")}
                     </span>
                     <h2 className="mt-3 text-4xl sm:text-5xl font-black text-white">
                         Short <span className="text-gradient-blue-lime">Bio</span>
                     </h2>
                     <p className="mt-4 text-slate-400 max-w-xl mx-auto">
-                        สรุปประวัติและทักษะของผมในรูปแบบที่อ่านง่าย
+                        {t("สรุปประวัติและทักษะของผมในรูปแบบที่อ่านง่าย", "A quick summary of my background and skills")}
                     </p>
                 </motion.div>
 
@@ -112,7 +139,9 @@ export default function ShortBio() {
                                     {card.icon}
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-white text-base">{card.title}</h3>
+                                    <h3 className="font-bold text-white text-base">
+                                        {lang === "th" ? card.titleTh : card.titleEn}
+                                    </h3>
                                     <p className="text-xs text-slate-500 font-mono">{card.subtitle}</p>
                                 </div>
                             </div>
@@ -127,7 +156,7 @@ export default function ShortBio() {
 
                             {/* Items */}
                             <ul className="space-y-2.5">
-                                {card.items.map((item, j) => (
+                                {(lang === "th" ? card.itemsTh : card.itemsEn).map((item, j) => (
                                     <li
                                         key={j}
                                         className="text-slate-300 text-sm flex items-start gap-2 leading-relaxed"
